@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>asking-out</title>
+    <style>
+        body{
+            /* background-image: rgb(238,174,202); */
+            background-image: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+        }
+        #unclickableButton, #clickableButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color:rgba(148,187,233,1);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition: top 1s ease-out, left 1s ease-out; /* Adjusted transition duration */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        #clickableButton {
+            left: 40%;
+        }
+
+        #question {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000000;
+            font-size: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="question">Will you be my Valentine?</div>
+    <a href="yes.html" id="unclickableButton">No!</a>
+    <a href="https://www.example.com" id="clickableButton">Yes!</a>
+
+    <script>
+        const button = document.getElementById('unclickableButton');
+        const windowWidth = window.innerWidth * 0.9;
+        const windowHeight = window.innerHeight * 0.9;
+
+        document.addEventListener('mousemove', (e) => {
+            const distanceX = Math.abs(e.x - button.offsetLeft);
+            const distanceY = Math.abs(e.y - button.offsetTop);
+
+            if (distanceX < 100 && distanceY < 50) {
+                let newX = Math.random() * windowWidth;
+                let newY = Math.random() * windowHeight;
+
+                button.style.transition = "top 1s ease-out, left 1s ease-out"; // Adjusted transition duration
+                button.style.left = ${newX}px;
+                button.style.top = ${newY}px;
+            }
+        });
+    </script>
+</body>
+</html>
